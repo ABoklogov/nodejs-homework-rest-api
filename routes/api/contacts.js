@@ -9,9 +9,7 @@ router.get('/:contactId', ctrl.getContactById)
 
 router.post('/', ctrl.addContact)
 
-router.delete('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.delete('/:contactId', ctrl.removeContact)
 
 router.patch('/:contactId', async (req, res, next) => {
   res.json({ message: 'template message' })

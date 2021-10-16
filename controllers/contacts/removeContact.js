@@ -1,22 +1,30 @@
-const path = require('path')
-const fs = require('fs').promises
-const { listContacts } = require('./listContacts')
+const data = require('../../contactsData')
 
-const contactsPath = path.join(__dirname, '..', '..', 'db', 'contacts.json')
+const removeContact = async (req, res, next) => {
+  try {
+    const id = req.params.contactId
+    const presenceContact = await data.removeContactData(id)
 
-async function removeContact(contactId) {
-  const contacts = await listContacts()
-  const idx = contacts.findIndex((item) => item.id === Number(contactId))
-  if (idx === -1) {
-    return null
+    presenceContact
+      ? res.json({
+        status: 'success',
+        code: 200,
+        message: 'contact deleted'
+      })
+      : res.json({
+        status: 'rejected',
+        code: 404,
+        message: 'Not found'
+      })
+  } catch (error) {
+    res.json({
+      status: 'rejected',
+      code: 404,
+      message: error.message
+    })
   }
-
-  contacts.splice(idx, 1)
-
-  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2))
-  return true
 }
 
 module.exports = {
-  removeContact,
+  removeContact
 }
