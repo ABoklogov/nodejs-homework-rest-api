@@ -1,7 +1,9 @@
-const { getAllContacts } = require('./getAllContacts')
-const { getContact } = require('./getContact')
+const { getAllContactsData } = require('./getAllContactsData')
+const { getContactData } = require('./getContactData')
+const { addContactData } = require('./addContactData')
 
 module.exports = {
-  getAllContacts,
-  getContact
+  getAllContactsData,
+  getContactData,
+  addContactData
 }

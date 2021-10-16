@@ -4,7 +4,7 @@ const { normalizeData } = require('./normalizeData')
 
 const contactsPath = path.join(__dirname, '..', 'db', 'contacts.json')
 
-async function getAllContacts() {
+async function getAllContactsData() {
   const data = await fs.readFile(contactsPath, 'utf8')
   const contacts = normalizeData(data)
 
@@ -12,5 +12,5 @@ async function getAllContacts() {
 }
 
 module.exports = {
-  getAllContacts,
+  getAllContactsData,
 }
