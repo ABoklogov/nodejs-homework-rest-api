@@ -11,8 +11,6 @@ router.post('/', ctrl.addContact)
 
 router.delete('/:contactId', ctrl.removeContact)
 
-router.patch('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.put('/:contactId', ctrl.updateContact)
 
 module.exports = router
