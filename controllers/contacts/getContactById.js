@@ -1,6 +1,6 @@
 const data = require('../../contactsData')
 
-const getContactById = async (req, res, next) => {
+const getContactById = async (req, res) => {
   try {
     const id = req.params.contactId
     const contact = await data.getContactData(id)

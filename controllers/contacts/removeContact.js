@@ -1,6 +1,6 @@
 const data = require('../../contactsData')
 
-const removeContact = async (req, res, next) => {
+const removeContact = async (req, res) => {
   try {
     const id = req.params.contactId
     const presenceContact = await data.removeContactData(id)

@@ -1,6 +1,6 @@
 const data = require('../../contactsData/getAllContactsData')
 
-const listContacts = async (req, res, next) => {
+const listContacts = async (req, res) => {
   try {
     const contacts = await data.getAllContactsData()
 

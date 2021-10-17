@@ -1,11 +1,5 @@
 [
   {
-    "id": 3,
-    "name": "Kennedy Lane",
-    "email": "mattis.Cras@nonenimMauris.net",
-    "phone": "(542) 451-7038"
-  },
-  {
     "id": "EJqTnBNMc",
     "name": "Mango",
     "email": "mango@gmail.com",
@@ -30,9 +24,27 @@
     "phone": "44444444444"
   },
   {
-    "id": "Uugu2YpMV",
-    "name": "tanya",
+    "id": "e813e9cd-fbd8-4b5b-ae83-c7dc6c112376",
+    "name": "manya",
+    "email": "jwiejwi@kewk.ru",
+    "phone": "000000000000"
+  },
+  {
+    "id": "b7655478-6b32-4717-b1e2-143c9452ede0",
+    "name": "fedddor",
     "email": "jwiejwi@kewk.ru",
     "phone": "44444444444"
+  },
+  {
+    "id": "974bb568-0f04-4393-94c5-016c3ff0091b",
+    "name": "bob",
+    "email": "mango@gmail.com",
+    "phone": "322-22-22"
+  },
+  {
+    "id": "504376ba-2f67-4313-9728-724de204bc10",
+    "name": "gad",
+    "email": "gad@gmail.com",
+    "phone": "322-22-22"
   }
 ]

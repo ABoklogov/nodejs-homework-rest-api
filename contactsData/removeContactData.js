@@ -6,7 +6,7 @@ const contactsPath = path.join(__dirname, '..', 'db', 'contacts.json')
 
 async function removeContactData(contactId) {
   const contacts = await getAllContactsData()
-  const idx = contacts.findIndex((item) => item.id === Number(contactId))
+  const idx = contacts.findIndex((item) => item.id === contactId)
   if (idx === -1) {
     return null
   }
