@@ -6,18 +6,18 @@ const removeContact = async (req, res) => {
     const presenceContact = await data.removeContactData(id)
 
     presenceContact
-      ? res.json({
+      ? res.status(200).json({
         status: 'success',
         code: 200,
         message: 'contact deleted'
       })
-      : res.json({
+      : res.status(404).json({
         status: 'rejected',
         code: 404,
         message: 'Not found'
       })
   } catch (error) {
-    res.json({
+    res.status(404).json({
       status: 'rejected',
       code: 404,
       message: error.message

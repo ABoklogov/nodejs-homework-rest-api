@@ -4,7 +4,7 @@ const listContacts = async (req, res) => {
   try {
     const contacts = await data.getAllContactsData()
 
-    res.json({
+    res.status(200).json({
       status: 'success',
       code: 200,
       data: {
@@ -12,7 +12,7 @@ const listContacts = async (req, res) => {
       },
     })
   } catch (error) {
-    res.json({
+    res.status(404).json({
       status: 'rejected',
       code: 404,
       message: error.message

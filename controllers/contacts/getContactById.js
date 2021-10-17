@@ -6,20 +6,20 @@ const getContactById = async (req, res) => {
     const contact = await data.getContactData(id)
 
     contact
-      ? res.json({
+      ? res.status(200).json({
         status: 'success',
         code: 200,
         data: {
           resault: contact
         }
       })
-      : res.json({
+      : res.status(404).json({
         status: 'rejected',
         code: 404,
         message: 'Not found'
       })
   } catch (error) {
-    res.json({
+    res.status(404).json({
       status: 'rejected',
       code: 404,
       message: error.message
