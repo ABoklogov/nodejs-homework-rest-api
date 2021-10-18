@@ -2,7 +2,7 @@ const path = require('path')
 const fs = require('fs').promises
 const { getAllContactsData } = require('./getAllContactsData')
 
-const contactsPath = path.join(__dirname, '..', 'db', 'contacts.json')
+const contactsPath = path.join(__dirname, '..', '..', 'db', 'contacts.json')
 
 async function removeContactData(contactId) {
   const contacts = await getAllContactsData()

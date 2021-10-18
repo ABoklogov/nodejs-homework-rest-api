@@ -3,7 +3,7 @@ const fs = require('fs').promises
 const { getAllContactsData } = require('./getAllContactsData')
 const { v4: uuidv4 } = require('uuid')
 
-const contactsPath = path.join(__dirname, '..', 'db', 'contacts.json')
+const contactsPath = path.join(__dirname, '..', '..', 'db', 'contacts.json')
 
 async function addContactData(name, email, phone) {
   const newContact = {
