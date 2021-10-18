@@ -1,0 +1,44 @@
+[
+  {
+    "id": "EJqTnBNMc",
+    "name": "Mango",
+    "email": "mango@gmail.com",
+    "phone": "322-22-22"
+  },
+  {
+    "id": "183272b8-e30f-4dd0-8dc8-7c67a9c2005d",
+    "name": "serjo",
+    "email": "serjo@gmail.com",
+    "phone": "322-22-22"
+  },
+  {
+    "id": "8ffce9ce-d131-4e08-94e5-19ed9c941503",
+    "name": "maria",
+    "email": "maria@gmail.ru",
+    "phone": "1111111111"
+  },
+  {
+    "id": "34a7d236-ec03-4d98-b0c2-f5778bb5a680",
+    "name": "vasya",
+    "email": "jwiejwi@kewk.ru",
+    "phone": "44444444444"
+  },
+  {
+    "id": "e813e9cd-fbd8-4b5b-ae83-c7dc6c112376",
+    "name": "manya",
+    "email": "jwiejwi@kewk.ru",
+    "phone": "000000000000"
+  },
+  {
+    "id": "b7655478-6b32-4717-b1e2-143c9452ede0",
+    "name": "fedddor",
+    "email": "jwiejwi@kewk.ru",
+    "phone": "44444444444"
+  },
+  {
+    "id": "974bb568-0f04-4393-94c5-016c3ff0091b",
+    "name": "bob",
+    "email": "mango@gmail.com",
+    "phone": "322-22-22"
+  }
+]
