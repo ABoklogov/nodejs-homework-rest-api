@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs').promises
 const { normalizeData } = require('./normalizeData')
+// const { Schema, model } = require('mongoose')
 
 const contactsPath = path.join(__dirname, '..', '..', 'db', 'contacts.json')
 
