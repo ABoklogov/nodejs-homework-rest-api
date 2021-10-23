@@ -10,6 +10,7 @@ const addContact = async (req, res, next) => {
       res.status(400).json({
         status: 'rejected',
         code: 400,
+        data: null,
         message: `there is already a contact with the name ${name}`
       })
     } else {
