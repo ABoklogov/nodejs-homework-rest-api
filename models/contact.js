@@ -32,6 +32,7 @@ const joiSchema = Joi.object({
     .pattern(new RegExp(reg))
     .required(),
   favorite: Joi.boolean()
+    .default(false)
 })
 
 const Contact = model('contact', contactSchema)

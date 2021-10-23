@@ -16,4 +16,6 @@ router.delete('/:contactId', ctrl.removeContact)
 
 router.put('/:contactId', validation(joiSchema), ctrl.updateContact)
 
+router.patch('/:contactId/favorite', validation(joiSchema), ctrl.updateStatusContact)
+
 module.exports = router
