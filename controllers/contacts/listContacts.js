@@ -1,8 +1,8 @@
-const { contacts: data } = require('../../models')
+const { Contact } = require('../../models')
 
-const listContacts = async (req, res) => {
+const listContacts = async (req, res, next) => {
   try {
-    const contacts = await data.getAllContactsData()
+    const contacts = await Contact.find({})
 
     res.status(200).json({
       status: 'success',
@@ -12,11 +12,7 @@ const listContacts = async (req, res) => {
       },
     })
   } catch (error) {
-    res.status(404).json({
-      status: 'rejected',
-      code: 404,
-      message: error.message
-    })
+    next(error)
   }
 }
 

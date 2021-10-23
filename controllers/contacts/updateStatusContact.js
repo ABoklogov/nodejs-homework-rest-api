@@ -1,10 +1,20 @@
 const { Contact } = require('../../models')
 
-const updateContact = async (req, res, next) => {
+const updateStatusContact = async (req, res, next) => {
   try {
     const id = req.params.contactId
+    const { favorite } = req.body
 
-    const updateContact = await Contact.findByIdAndUpdate(id, req.body, { new: true })
+    if (favorite === undefined) {
+      return res.status(400).json({
+        status: 'rejected',
+        code: 404,
+        data: null,
+        message: 'missing field favorite'
+      })
+    }
+
+    const updateContact = await Contact.findByIdAndUpdate(id, { favorite }, { new: true })
 
     updateContact
       ? res.status(200).json({
@@ -12,8 +22,7 @@ const updateContact = async (req, res, next) => {
         code: 200,
         data: {
           resault: updateContact
-        },
-        message: 'Сontact replaced'
+        }
       })
       : res.status(404).json({
         status: 'rejected',
@@ -27,5 +36,5 @@ const updateContact = async (req, res, next) => {
 }
 
 module.exports = {
-  updateContact
+  updateStatusContact
 }

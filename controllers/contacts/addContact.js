@@ -1,37 +1,30 @@
-const { contacts: data } = require('../../models')
+const { Contact } = require('../../models')
 
-const addContact = async (req, res) => {
+const addContact = async (req, res, next) => {
   try {
-    const { name, email, phone } = req.body
-    if (!name || !email || !phone) {
-      return res.status(400).json({
+    const { name } = req.body
+
+    const existenceСontact = await Contact.findOne({ name })
+
+    if (existenceСontact) {
+      res.status(400).json({
         status: 'rejected',
         code: 400,
-        message: 'missing required name field'
+        data: null,
+        message: `there is already a contact with the name ${name}`
       })
-    }
-
-    const contact = await data.addContactData(name, email, phone)
-
-    contact
-      ? res.status(201).json({
+    } else {
+      const result = await Contact.create(req.body)
+      res.status(201).json({
         status: 'success',
         code: 201,
         data: {
-          resault: contact
+          resault: result
         }
       })
-      : res.status(400).json({
-        status: 'rejected',
-        code: 400,
-        message: `there is already a contact with the name ${name}`
-      })
+    }
   } catch (error) {
-    res.status(404).json({
-      status: 'rejected',
-      code: 404,
-      message: error.message
-    })
+    next(error)
   }
 }
 
