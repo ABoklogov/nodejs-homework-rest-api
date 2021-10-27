@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs')
 const { User } = require('../../models')
 
 const register = async (req, res, next) => {
@@ -7,19 +8,20 @@ const register = async (req, res, next) => {
 
     if (user) {
       return res.status(409).json({
-        Status: '409 Conflict',
-        ContentType: 'application/json',
-        ResponseBody: {
+        status: 'Conflict',
+        code: 409,
+        responseBody: {
           message: 'Email in use'
         }
       })
     }
 
-    const result = await User.create({ email, password })
+    const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+    await User.create({ email, password: hashPassword })
 
     res.status(201).json({
-      Status: '201 Created',
-      ContentType: 'application/json',
+      status: 'Created',
+      code: 201,
       ResponseBody: {
         user: {
           email,

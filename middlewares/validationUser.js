@@ -4,9 +4,11 @@ const validationUser = (schema) => {
 
     if (error) {
       return res.status(400).json({
-        Status: '400 Bad Request',
-        ContentType: 'application/json',
-        ResponseBody: 'Ошибка от Joi или другой библиотеки валидации'
+        status: 'Bad Request',
+        code: 400,
+        responseBody: {
+          message: 'Ошибка от Joi или другой библиотеки валидации'
+        }
       })
     }
     next()

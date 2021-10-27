@@ -6,7 +6,6 @@ const userSchema = Schema({
     type: String,
     required: [true, 'Password is required'],
     minlength: 6,
-    maxlength: 30,
   },
   email: {
     type: String,
@@ -25,7 +24,7 @@ const userSchema = Schema({
 }, { versionKey: false, timestamps: true })
 
 const joiSchema = Joi.object({
-  password: Joi.string().min(6).max(30).required(),
+  password: Joi.string().min(6).required(),
   email: Joi.string().required(),
   subscription: Joi.string().default('starter'),
   token: Joi.string().default(null)
