@@ -1,4 +1,4 @@
-const { Schema, model, SchemaTypes } = require('mongoose')
+const { Schema, model } = require('mongoose')
 const Joi = require('joi')
 
 const reg = /^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/
@@ -19,7 +19,7 @@ const contactSchema = Schema({
     default: false,
   },
   owner: {
-    type: SchemaTypes.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'user',
   }
 }, { versionKey: false, timestamps: true })
