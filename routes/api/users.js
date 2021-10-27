@@ -9,7 +9,7 @@ const { users: ctrl } = require('../../controllers')
 const userValidationMiddleware = validationUser(joiSchema)
 
 router.post('/signup', userValidationMiddleware, ctrl.register)
-router.post('/login', ctrl.login)
-router.get('/logout', ctrl.logout)
+// router.post('/login', ctrl.login)
+// router.get('/logout', ctrl.logout)
 
 module.exports = router
