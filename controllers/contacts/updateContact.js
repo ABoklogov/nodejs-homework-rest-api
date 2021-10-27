@@ -16,7 +16,7 @@ const updateContact = async (req, res, next) => {
         message: 'Сontact replaced'
       })
       : res.status(404).json({
-        status: 'rejected',
+        status: 'error',
         code: 404,
         data: null,
         message: 'Not found'

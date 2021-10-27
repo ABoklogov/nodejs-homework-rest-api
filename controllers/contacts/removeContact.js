@@ -15,7 +15,7 @@ const removeContact = async (req, res, next) => {
         message: 'contact deleted'
       })
       : res.status(404).json({
-        status: 'rejected',
+        status: 'error',
         code: 404,
         data: null,
         message: 'Not found'

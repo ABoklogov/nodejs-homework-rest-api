@@ -2,11 +2,11 @@ const express = require('express')
 const router = express.Router()
 
 const { joiSchema } = require('../../models/user')
-const { validationUser } = require('../../middlewares')
+const { validation } = require('../../middlewares')
 
 const { users: ctrl } = require('../../controllers')
 
-const userValidationMiddleware = validationUser(joiSchema)
+const userValidationMiddleware = validation(joiSchema)
 
 router.post('/signup', userValidationMiddleware, ctrl.register)
 router.post('/login', userValidationMiddleware, ctrl.login)

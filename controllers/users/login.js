@@ -8,11 +8,9 @@ const login = async (req, res, next) => {
 
     const responseError = () => {
       return res.status(401).json({
-        status: 'Unauthorized',
+        status: 'unauthorized',
         code: 401,
-        responseBody: {
-          message: 'Email or password is wrong'
-        }
+        message: 'Email or password is wrong'
       })
     }
     if (!user) {
@@ -31,7 +29,7 @@ const login = async (req, res, next) => {
     res.status(200).json({
       status: 'ok',
       code: 200,
-      responseBody: {
+      data: {
         token,
         user: {
           email,

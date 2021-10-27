@@ -8,11 +8,9 @@ const register = async (req, res, next) => {
 
     if (user) {
       return res.status(409).json({
-        status: 'Conflict',
+        status: 'conflict',
         code: 409,
-        responseBody: {
-          message: 'Email in use'
-        }
+        message: 'Email in use'
       })
     }
 
@@ -20,9 +18,9 @@ const register = async (req, res, next) => {
     await User.create({ email, password: hashPassword })
 
     res.status(201).json({
-      status: 'Created',
+      status: 'created',
       code: 201,
-      ResponseBody: {
+      data: {
         user: {
           email,
           subscription: 'starter'

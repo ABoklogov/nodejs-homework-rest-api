@@ -14,7 +14,7 @@ const getContactById = async (req, res, next) => {
         }
       })
       : res.status(404).json({
-        status: 'rejected',
+        status: 'error',
         code: 404,
         data: null,
         message: 'Not found'

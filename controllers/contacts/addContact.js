@@ -8,7 +8,7 @@ const addContact = async (req, res, next) => {
 
     if (existenceСontact) {
       res.status(400).json({
-        status: 'rejected',
+        status: 'conflict',
         code: 400,
         data: null,
         message: `there is already a contact with the name ${name}`
@@ -16,7 +16,7 @@ const addContact = async (req, res, next) => {
     } else {
       const result = await Contact.create(req.body)
       res.status(201).json({
-        status: 'success',
+        status: 'created',
         code: 201,
         data: {
           resault: result
