@@ -1,7 +1,8 @@
 const { Contact } = require('../../models')
 
 const addContact = async (req, res) => {
-  const { name } = req.body
+  const newContact = { ...req.body, owner: req.user._id }
+  const { name } = newContact
 
   const existenceСontact = await Contact.findOne({ name })
 
@@ -13,7 +14,7 @@ const addContact = async (req, res) => {
       message: `there is already a contact with the name ${name}`
     })
   } else {
-    const result = await Contact.create(req.body)
+    const result = await Contact.create(newContact)
     res.status(201).json({
       status: 'created',
       code: 201,
