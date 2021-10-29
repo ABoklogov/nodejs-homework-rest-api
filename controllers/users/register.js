@@ -13,7 +13,8 @@ const register = async (req, res) => {
     })
   }
 
-  const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+  const { SALT } = process.env
+  const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(Number(SALT)))
   await User.create({ email, password: hashPassword })
 
   res.status(201).json({
