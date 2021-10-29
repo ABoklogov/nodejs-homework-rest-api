@@ -13,7 +13,7 @@ const updateStatusContact = async (req, res) => {
     })
   }
 
-  const updateContact = await Contact.findByIdAndUpdate(id, { favorite }, { new: true })
+  const updateContact = await Contact.findByIdAndUpdate(id, { favorite }, { new: true }).populate('owner', '_id email subscription')
 
   updateContact
     ? res.status(200).json({

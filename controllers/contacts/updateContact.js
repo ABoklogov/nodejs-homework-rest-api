@@ -3,7 +3,7 @@ const { Contact } = require('../../models')
 const updateContact = async (req, res) => {
   const id = req.params.contactId
 
-  const updateContact = await Contact.findByIdAndUpdate(id, req.body, { new: true })
+  const updateContact = await Contact.findByIdAndUpdate(id, req.body, { new: true }).populate('owner', '_id email subscription')
 
   updateContact
     ? res.status(200).json({

@@ -2,7 +2,7 @@ const { Contact } = require('../../models')
 
 const getContactById = async (req, res) => {
   const id = req.params.contactId
-  const contact = await Contact.findById(id)
+  const contact = await Contact.findById(id).populate('owner', '_id email subscription')
 
   contact
     ? res.status(200).json({
