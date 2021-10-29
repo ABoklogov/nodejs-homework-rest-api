@@ -28,7 +28,7 @@ const authenticate = async (req, res, next) => {
     res.status(401).json({
       status: 'unauthorized',
       code: 401,
-      message: error.message
+      message: 'Not authorized'
     })
   }
 }
