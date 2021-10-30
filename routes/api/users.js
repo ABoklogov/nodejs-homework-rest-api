@@ -12,5 +12,6 @@ router.post('/signup', userValidationMiddleware, controllerWrapper(ctrl.register
 router.post('/login', userValidationMiddleware, controllerWrapper(ctrl.login))
 router.get('/logout', authenticate, controllerWrapper(ctrl.logout))
 router.get('/current', authenticate, controllerWrapper(ctrl.current))
+router.patch('/', authenticate, controllerWrapper(ctrl.subscription))
 
 module.exports = router

@@ -7,7 +7,7 @@ const updateStatusContact = async (req, res) => {
   if (favorite === undefined) {
     return res.status(400).json({
       status: 'error',
-      code: 404,
+      code: 400,
       data: null,
       message: 'missing field favorite'
     })
