@@ -4,8 +4,9 @@ const validation = (schema) => {
 
     if (error) {
       return res.status(400).json({
-        status: error.details[0].message,
-        code: 400
+        status: 'Bad Request',
+        code: 400,
+        message: error.details[0].message
       })
     }
     next()
@@ -13,6 +14,4 @@ const validation = (schema) => {
   return validationFunc
 }
 
-module.exports = {
-  validation
-}
+module.exports = validation
