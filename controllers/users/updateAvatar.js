@@ -13,7 +13,7 @@ const updateAvatar = async (req, res) => {
 
   try {
     await fs.rename(tmpPath, uploadPath) // перемещаем аватарку из временной папки tmp в папку для аватарки юзера public/avatars/idUser
-    const avatarURL = `/public/avatars/${id}/${originalname}`
+    const avatarURL = `/avatars/${id}/${originalname}`
     await User.findByIdAndUpdate(id, { avatarURL })
 
     res.status(200).json({

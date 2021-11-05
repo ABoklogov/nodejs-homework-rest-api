@@ -23,6 +23,9 @@ const login = async (req, res) => {
   if (!compareResult) {
     responseError()
   }
+  console.log(user)
+
+  const { subscription, avatarURL } = user
 
   const payload = {
     id: user._id
@@ -39,7 +42,8 @@ const login = async (req, res) => {
       token,
       user: {
         email,
-        subscription: 'starter'
+        subscription,
+        avatarURL
       }
     }
   })
