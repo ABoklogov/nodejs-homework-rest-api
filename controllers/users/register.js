@@ -1,5 +1,10 @@
+const fs = require('fs/promises')
+const path = require('path')
+
 const bcrypt = require('bcryptjs')
 const { User } = require('../../models')
+
+const avatarDir = path.join(__dirname, '../../', 'public/avatars')
 
 const register = async (req, res) => {
   const { email, password } = req.body
@@ -15,7 +20,10 @@ const register = async (req, res) => {
 
   const { SALT } = process.env
   const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(Number(SALT)))
-  await User.create({ email, password: hashPassword })
+  const newUser = await User.create({ email, password: hashPassword })
+
+  const dirPath = path.join(avatarDir, newUser._id.toString())
+  await fs.mkdir(dirPath) // создаем папку для аватара в public/avatars/....
 
   res.status(201).json({
     status: 'created',
