@@ -1,22 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const rateLimit = require('express-rate-limit')
 
 const { joiSchema } = require('../../models/user')
-const { validation, controllerWrapper, authenticate, upload } = require('../../middlewares')
+const { validation, controllerWrapper, authenticate, upload, limiter } = require('../../middlewares')
 
 const { users: ctrl } = require('../../controllers')
-
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // limit each IP to 100 requests per windowMs
-  handler: (req, res) => {
-    res.status(403).json({
-      code: 403,
-      message: 'Request limit exceeded'
-    })
-  }
-})
 
 const userValidationMiddleware = validation(joiSchema)
 

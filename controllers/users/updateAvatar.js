@@ -14,6 +14,7 @@ const updateAvatar = async (req, res) => {
   try {
     const [extension] = originalname.split('.').reverse() // проверяем формат пришедшего файла
     if (!extensionList.includes(extension)) {
+      await fs.unlink(tmpPath)
       return res.status(415).json({
         status: 'error',
         code: 415,
