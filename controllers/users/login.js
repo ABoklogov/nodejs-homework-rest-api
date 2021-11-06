@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const creationToken = require('./creationToken')
+
 const { User } = require('../../models')
 
 const login = async (req, res) => {
@@ -25,13 +26,7 @@ const login = async (req, res) => {
   }
 
   const { subscription, avatarURL } = user
-
-  const payload = {
-    id: user._id
-  }
-  const { SECRET_KEY } = process.env
-
-  const token = jwt.sign(payload, SECRET_KEY)
+  const token = creationToken(user) // генерируем токен
   await User.findByIdAndUpdate(user._id, { token })
 
   res.status(200).json({
