@@ -1,5 +1,6 @@
 const fs = require('fs/promises')
 const path = require('path')
+const Jimp = require('jimp')
 
 const avatarDir = path.join(__dirname, '../../', 'public/avatars')
 
@@ -12,27 +13,29 @@ const updateAvatar = async (req, res) => {
   const uploadPath = path.join(avatarDir, id, originalname)
 
   try {
+    const file = await Jimp.read(tmpPath)
+    await file.resize(250, 250).write(tmpPath) // изменяем размер полученного файла
     await fs.rename(tmpPath, uploadPath) // перемещаем аватарку из временной папки tmp в папку для аватарки юзера public/avatars/idUser
     const avatarURL = `/avatars/${id}/${originalname}`
-    await User.findByIdAndUpdate(id, { avatarURL })
+    const isUpdateAvatarURL = await User.findByIdAndUpdate(id, { avatarURL })
 
-    res.status(200).json({
-      status: 'ok',
-      code: 200,
-      data: {
-        avatarURL
-      }
-    })
+    isUpdateAvatarURL
+      ? res.status(200).json({
+        status: 'ok',
+        code: 200,
+        data: {
+          avatarURL
+        }
+      })
+      : res.status(401).json({
+        status: 'unauthorized',
+        code: 401,
+        data: {
+          message: 'Not authorized'
+        }
+      })
   } catch (error) {
     await fs.unlink(tmpPath)
-
-    res.status(401).json({
-      status: 'unauthorized',
-      code: 401,
-      data: {
-        message: 'Not authorized'
-      }
-    })
     throw error
   }
 }

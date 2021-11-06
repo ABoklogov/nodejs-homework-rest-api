@@ -23,7 +23,6 @@ const login = async (req, res) => {
   if (!compareResult) {
     responseError()
   }
-  console.log(user)
 
   const { subscription, avatarURL } = user
 

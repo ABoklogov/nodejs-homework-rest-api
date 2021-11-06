@@ -19,7 +19,7 @@ const register = async (req, res) => {
     })
   }
 
-  const defaultAvatar = gravatar.url(email, { s: 100 }, true) // создаем дефолтную аватарку
+  const defaultAvatar = gravatar.url(email, { s: '250' }, true) // создаем дефолтную аватарку
 
   const { SALT } = process.env
   const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(Number(SALT)))
