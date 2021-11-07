@@ -14,6 +14,7 @@ app.use(helmet())
 app.use(logger(formatsLogger))
 app.use(cors())
 app.use(express.json({ limit: 10000 }))
+app.use(express.static('public')) // для отдачи статичных файлов
 
 app.use('/api/v1/users', usersRouter)
 app.use('/api/v1/contacts', contactsRouter)

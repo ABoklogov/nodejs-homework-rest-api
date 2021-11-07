@@ -1,5 +1,12 @@
+const fs = require('fs/promises')
+const path = require('path')
+const gravatar = require('gravatar')
 const bcrypt = require('bcryptjs')
+const creationToken = require('./creationToken')
+
 const { User } = require('../../models')
+
+const avatarDir = path.join(__dirname, '../../', 'public/avatars')
 
 const register = async (req, res) => {
   const { email, password } = req.body
@@ -13,17 +20,29 @@ const register = async (req, res) => {
     })
   }
 
+  const defaultAvatar = gravatar.url(email, { s: '250' }, true) // создаем дефолтную аватарку
+
   const { SALT } = process.env
   const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(Number(SALT)))
-  await User.create({ email, password: hashPassword })
+  const newUser = await User.create({ email, password: hashPassword, avatarURL: defaultAvatar })
+
+  const token = creationToken(newUser) // генерируем токен
+  await User.findByIdAndUpdate(newUser._id, { token })
+
+  const dirPath = path.join(avatarDir, newUser._id.toString())
+  await fs.mkdir(dirPath) // создаем папку для аватара в public/avatars/....
+
+  const { subscription, avatarURL } = newUser
 
   res.status(201).json({
     status: 'created',
     code: 201,
     data: {
+      token,
       user: {
         email,
-        subscription: 'starter'
+        subscription,
+        avatarURL
       }
     }
   })
