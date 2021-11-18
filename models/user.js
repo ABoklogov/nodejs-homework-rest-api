@@ -41,11 +41,9 @@ const userSchema = Schema(
 const joiSchema = Joi.object({
   password: Joi.string().min(6).required(),
   email: Joi.string().required(),
-  subscription: Joi.string().default('starter'),
-  token: Joi.string().default(null),
-  avatarURL: Joi.string().default(''),
-  verify: Joi.boolean().default(false),
-  verifyToken: Joi.string().required()
+  // subscription: Joi.string().default('starter'),
+  // token: Joi.string().default(null),
+  // avatarURL: Joi.string().default(''),
 })
 
 const User = model('user', userSchema)
