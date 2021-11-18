@@ -5,6 +5,7 @@ const current = require('./current')
 const subscription = require('./subscription')
 const updateAvatar = require('./updateAvatar.js')
 const verification = require('./verification')
+const reVerification = require('./reVerification')
 
 module.exports = {
   register,
@@ -13,5 +14,6 @@ module.exports = {
   current,
   subscription,
   updateAvatar,
-  verification
+  verification,
+  reVerification
 }

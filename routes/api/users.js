@@ -9,6 +9,7 @@ const { users: ctrl } = require('../../controllers')
 const userValidationMiddleware = validation(joiSchema)
 
 router.post('/signup', userValidationMiddleware, controllerWrapper(ctrl.register))
+router.post('/verify', controllerWrapper(ctrl.reVerification))
 router.get('/verify/:verificationToken', controllerWrapper(ctrl.verification))
 router.post('/login', limiter, userValidationMiddleware, controllerWrapper(ctrl.login))
 router.get('/logout', authenticate, controllerWrapper(ctrl.logout))

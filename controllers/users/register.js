@@ -30,14 +30,14 @@ const register = async (req, res) => {
     email,
     password: hashPassword,
     avatarURL: defaultAvatar,
-    verifyToken: v4()
+    verificationToken: v4()
   })
-  const { subscription, avatarURL, verifyToken } = newUser
+  const { subscription, avatarURL, verificationToken } = newUser
 
   const data = {
     to: email,
     subject: 'Подтверждение регистрации на сайте',
-    html: `<a href='http://localhost:3000/api/v1/users/verify/${verifyToken}'>Подтвердите регистрацию</a>`
+    html: `<a href='http://localhost:3000/api/v1/users/verify/${verificationToken}'>Перейдите по ссылке и подтвердите регистрацию</a>`
   }
   await sendMail(data)
 
