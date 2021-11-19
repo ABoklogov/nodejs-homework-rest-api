@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs')
-const creationToken = require('./creationToken')
+const { creationToken } = require('../../utils')
 
 const { User } = require('../../models')
 
@@ -7,15 +7,18 @@ const login = async (req, res) => {
   const { email, password } = req.body
   const user = await User.findOne({ email })
 
-  const responseError = () => {
+  const responseError = (message) => {
     return res.status(401).json({
       status: 'unauthorized',
       code: 401,
-      message: 'Email or password is wrong'
+      message
     })
   }
   if (!user) {
-    responseError()
+    responseError('Email or password is wrong')
+  }
+  if (!user.verify) {
+    responseError('Email not verified')
   }
 
   const hashPassword = user.password

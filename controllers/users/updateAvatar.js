@@ -1,7 +1,7 @@
 const fs = require('fs/promises')
 const path = require('path')
 const Jimp = require('jimp')
-const extensionList = require('./extensionList')
+const extensionList = require('../../utils/extensionList')
 
 const avatarDir = path.join(__dirname, '../../', 'public/avatars')
 
